@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command:  docker build . --file Dockerfile --tag stable-diffusion-openvino:$(date +%s)
+          command:  echo "hello"
   build-image:
     machine:
       image: ubuntu-2204:current
