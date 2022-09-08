@@ -17,10 +17,17 @@ jobs:
       - run:
           name: "Say hello"
           command:  docker build . --file Dockerfile --tag stable-diffusion-openvino:$(date +%s)
+  build-image:
+    machine:
+      image: ubuntu-2204:current
+    steps:
+      - checkout
+      - run: docker build . --file Dockerfile --tag stable-diffusion-openvino:$(date +%s)
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
+      - build-image
       - say-hello
