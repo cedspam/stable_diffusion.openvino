@@ -21,6 +21,9 @@ jobs:
     machine:
       image: ubuntu-2204:current
     steps:
+      - setup_remote_docker:
+          version: 20.10.11
+
       - checkout
       - run: docker build . --file Dockerfile --tag stable-diffusion-openvino:$(date +%s)
 
